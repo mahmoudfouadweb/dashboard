@@ -1,6 +1,7 @@
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
+import { useStateContext } from "./contexts/ContextProvider";
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
@@ -25,9 +26,10 @@ import {
 import "./App.css";
 
 function App() {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
+  
   return (
-    <div>
+    
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -90,7 +92,7 @@ function App() {
           </div>
         </div>
       </BrowserRouter>
-    </div>
+    
   );
 }
 
