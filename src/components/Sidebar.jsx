@@ -10,19 +10,18 @@ import { Item } from "@syncfusion/ej2/splitbuttons";
 import { itemClick } from "@syncfusion/ej2/treemap";
 
 const Sidebar = () => {
-  const { activeMenu } = useStateContext();
-  console.log(activeMenu);
+  const { activeMenu, setActiveMenu } = useStateContext();
   const activeLink =
-    "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2";
+    "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2 text-black bg-light-gray";
 
   const normalLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2";
 
   return (
-    <div className="ml-3 h-screen md:overflow-hidden md:hover:overflow-auto pb-10">
+    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
       {activeMenu && (
         <>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center ">
             <Link
               to="/"
               onClick={() => {}}
@@ -33,7 +32,9 @@ const Sidebar = () => {
             <TooltipComponent content={"Menu"} position="BottomCenter">
               <button
                 type="button"
-                onClick={() => {}}
+                onClick={() =>
+                  setActiveMenu((prevActiveMenu) => !prevActiveMenu)
+                }
                 className="text-xl rounded-full p-3 hove:bg-light-gray mt-4 block md:hidden"
               >
                 <MdOutlineCancel />
@@ -41,7 +42,7 @@ const Sidebar = () => {
             </TooltipComponent>
           </div>
 
-          <div className="mt-10">
+          <ul className="mt-10">
             {links.map((l) => (
               <div key={l.title}>
                 <p className="text-gray-400 m-3 mt-4 uppercase ">{l.title}</p>
@@ -60,7 +61,7 @@ const Sidebar = () => {
                 ))}
               </div>
             ))}
-          </div>
+          </ul>
         </>
       )}
     </div>
