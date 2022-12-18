@@ -11,7 +11,6 @@ import { Button, Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 import { IconBase } from "react-icons/lib";
 
-
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
@@ -23,9 +22,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       <span
         style={{ background: dotColor }}
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-      >
-        {icon}
-      </span>
+      ></span>
+      {icon}
     </button>
   </TooltipComponent>
 );
@@ -47,7 +45,17 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
 
     handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -62,6 +70,7 @@ const Navbar = () => {
         <NavButton
           title="Cart"
           customFunc={() => handleClick("cart")}
+          dotColor={"#03c9d7"}
           color="blue"
           icon={<FiShoppingCart />}
         />
@@ -92,7 +101,10 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
-        {isClicked.cart}
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.userProfile && <UserProfile />}
+        {isClicked.notification && <Notification />}
       </div>
     </div>
   );

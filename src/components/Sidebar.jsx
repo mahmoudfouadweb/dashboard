@@ -10,7 +10,12 @@ import { Item } from "@syncfusion/ej2/splitbuttons";
 import { itemClick } from "@syncfusion/ej2/treemap";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+
+  const handelCloseSideBar = () => {
+    if (activeMenu && screenSize <= 900) setActiveMenu(false);
+  };
+
   const activeLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2 text-black bg-light-gray";
 
@@ -32,9 +37,7 @@ const Sidebar = () => {
             <TooltipComponent content={"Menu"} position="BottomCenter">
               <button
                 type="button"
-                onClick={() =>
-                  setActiveMenu((prevActiveMenu) => !prevActiveMenu)
-                }
+                onClick={handelCloseSideBar}
                 className="text-xl rounded-full p-3 hove:bg-light-gray mt-4 block md:hidden"
               >
                 <MdOutlineCancel />
@@ -50,7 +53,7 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={() => {}}
+                    onClick={handelCloseSideBar}
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }
