@@ -1,9 +1,38 @@
-import React from 'react'
+import React, { useState } from "react";
+import {
+  ScheduleComponent,
+  ViewsDirective,
+  ViewDirective,
+  Day,
+  Week,
+  WorkWeek,
+  Month,
+  Agenda,
+  Inject,
+  Resize,
+  DragAndDrop,
+} from "@syncfusion/ej2-react-schedule";
+import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
+
+import { scheduleData } from "../data/dummy";
+import { Header } from "../components";
 
 const Calender = () => {
   return (
-    <div>Calender</div>
-  )
-}
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-2 bg-white rounded-3xl">
+      <Header title={"Calender"} category="App" />
 
-export default Calender
+      <ScheduleComponent
+        height="650px"
+        selectedDate={new Date(2021, 0, 10)}
+        eventSettings={{ dataSource: scheduleData }}
+      >
+        <Inject
+          services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
+        />
+      </ScheduleComponent>
+    </div>
+  );
+};
+
+export default Calender;
