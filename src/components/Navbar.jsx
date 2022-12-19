@@ -38,6 +38,7 @@ const Navbar = () => {
     screenSize,
     setScreenSize,
     currentColor,
+    isCart,
   } = useStateContext();
 
   useEffect(() => {
@@ -103,7 +104,7 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
-        {isClicked.cart && <Cart />}
+        {isClicked.cart && isCart ? <Cart /> : " "}
         {isClicked.chat && <Chat />}
         {isClicked.userProfile && <UserProfile />}
         {isClicked.notification && <Notification />}
