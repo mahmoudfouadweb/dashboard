@@ -31,6 +31,7 @@ export const ContextProvider = ({ children }) => {
 
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
+    if (clicked === "cart") setIsCart(true);
   };
   return (
     <StateContext.Provider
@@ -50,7 +51,8 @@ export const ContextProvider = ({ children }) => {
         setThemeSettings,
         setColor,
         setMode,
-        isCart, setIsCart
+        isCart,
+        setIsCart,
       }}
     >
       {children}
