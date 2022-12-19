@@ -133,7 +133,11 @@ const Ecommerce = () => {
                 />
               </div>
               <div className="mt-10">
-                <Button color="white" bgColor="blue" text="download report" />
+                <Button
+                  color="white"
+                  bgColor={currentColor}
+                  text="download report"
+                />
               </div>
             </div>
             <div>

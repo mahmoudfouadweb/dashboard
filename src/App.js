@@ -1,4 +1,4 @@
-import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+  import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { useStateContext } from "./contexts/ContextProvider";
@@ -26,17 +26,24 @@ import {
 import "./App.css";
 
 function App() {
-  const { activeMenu } = useStateContext();
+  const {
+    activeMenu,
+    themeSettings,
+    setThemeSettings,
+    currentColor,
+    currentMode,
+  } = useStateContext();
 
   return (
-    <div>
+    <div className={currentMode === "Dark" ? "dark" : " "}>
       <div className="flex relative dark:bg-main-dark-bg">
         <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
           <TooltipComponent content={"setting"} position="Top">
             <button
               type="button"
               className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
-              style={{ background: "blue", borderRadius: "50%" }}
+              style={{ background: currentColor, borderRadius: "50%" }}
+              onClick={() => setThemeSettings((prevState) => !prevState)}
             >
               <FiSettings />
             </button>
@@ -52,7 +59,7 @@ function App() {
           </div>
         )}
         <div
-          className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
+          className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${
             activeMenu ? "md:ml-72" : "flex-2"
           }`}
         >
@@ -61,6 +68,8 @@ function App() {
           </div>
 
           <div>
+            {themeSettings && <ThemeSettings />}
+
             <Routes>
               {/* Dashboard */}
               <Route path="/" element={<Ecommerce />} />
