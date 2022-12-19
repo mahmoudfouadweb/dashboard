@@ -1,4 +1,4 @@
-import { Tooltip } from "@syncfusion/ej2-charts/src";
+import React from "react";
 import {
   ChartComponent,
   Inject,
@@ -7,24 +7,21 @@ import {
   SeriesCollectionDirective,
   SeriesDirective,
 } from "@syncfusion/ej2-react-charts";
-import { LineSeries } from "@syncfusion/ej2/charts";
+import { SplineAreaSeries } from "@syncfusion/ej2/charts";
 
-import React from "react";
 import { Header } from "../../components";
 import { useStateContext } from "../../contexts/ContextProvider";
 import {
+  areaCustomSeries,
   areaPrimaryXAxis,
   areaPrimaryYAxis,
-  lineCustomSeries,
-  LinePrimaryXAxis,
-  LinePrimaryYAxis,
 } from "../../data/dummy";
 
 const Area = () => {
-  const { currentMode, currentColor } = useStateContext();
+  const { currentMode } = useStateContext();
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-2 bg-white rounded-3xl">
-      <Header title={"Aria Chart"} category="Chart" />
+      <Header title={"Inflation Rate in Percentage Chart"} category="Chart" />
 
       <ChartComponent
         id="aria-chart"
@@ -34,10 +31,10 @@ const Area = () => {
         tooltip={{ enable: true }}
         background={currentMode === "Dark" ? "#33373e" : "#fff"}
       >
-        <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
+        <Inject services={[SplineAreaSeries, DateTime, Legend]} />
 
         <SeriesCollectionDirective>
-          {lineCustomSeries.map((item, index) => (
+          {areaCustomSeries.map((item, index) => (
             <SeriesDirective key={index} {...item} />
           ))}
         </SeriesCollectionDirective>
