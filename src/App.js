@@ -1,4 +1,4 @@
-  import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { useStateContext } from "./contexts/ContextProvider";
@@ -19,7 +19,6 @@ import {
   Pie,
   Financial,
   ColorPicker,
-  ColorMapping,
   Editor,
 } from "./pages";
 
