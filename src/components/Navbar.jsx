@@ -73,6 +73,7 @@ const Navbar = () => {
           customFunc={() => handleClick("cart")}
           dotColor={"#03c9d7"}
           color={currentColor}
+          onClick={() => console.log("cart")}
           icon={<FiShoppingCart />}
         />
         <NavButton

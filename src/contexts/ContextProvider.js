@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("#03c9d7");
   const [currentMode, setCurrentMode] = useState("Light");
   const [themeSettings, setThemeSettings] = useState(false);
+  const [isCart, setIsCart] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -49,6 +50,7 @@ export const ContextProvider = ({ children }) => {
         setThemeSettings,
         setColor,
         setMode,
+        isCart, setIsCart
       }}
     >
       {children}
