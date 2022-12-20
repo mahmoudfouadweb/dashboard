@@ -9,6 +9,8 @@ import {
   Sidebar,
   ThemeSettings,
   Notification,
+  Chat,
+  Cart,
 } from "./components";
 import {
   Ecommerce,
@@ -39,6 +41,8 @@ function App() {
     currentColor,
     currentMode,
     isNotification,
+    isChat,
+    isCart,
   } = useStateContext();
 
   return (
@@ -71,12 +75,13 @@ function App() {
           }`}
         >
           <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-            <Navbar  />
+            <Navbar />
           </div>
 
           <div>
             {themeSettings && <ThemeSettings />}
-            {isNotification && <Notification />}
+
+
             <Routes>
               {/* Dashboard */}
               <Route path="/" element={<Ecommerce />} />

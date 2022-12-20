@@ -84,13 +84,25 @@ const Cart = () => {
                 <p className=" text-gray-400 font-semibold ">Sun glasses</p>
                 <div className="mt-6">
                   <span className=" mr-12 ">$790</span>
-                  <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer">
+                  <span
+                    className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer"
+                    onClick={() => {
+                      increase();
+                      setItemState("decrease");
+                    }}
+                  >
                     -
                   </span>
                   <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer">
                     0
                   </span>
-                  <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer">
+                  <span
+                    className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer"
+                    onClick={() => {
+                      increase();
+                      setItemState("increase");
+                    }}
+                  >
                     +
                   </span>
                 </div>
@@ -108,13 +120,25 @@ const Cart = () => {
                 <p className=" text-gray-400 font-semibold ">Apple</p>
                 <div className="mt-6">
                   <span className=" mr-12 ">$1120</span>
-                  <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer">
+                  <span
+                    className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 cursor-pointer"
+                    onClick={() => {
+                      increase();
+                      setItemState("decrease");
+                    }}
+                  >
                     -
                   </span>
                   <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 ">
                     0
                   </span>
-                  <span className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 ">
+                  <span
+                    className="px-4 my-2 border-solid border-2 border-zinc-200 m-0 "
+                    onClick={() => {
+                      increase();
+                      setItemState("increase");
+                    }}
+                  >
                     +
                   </span>
                 </div>
