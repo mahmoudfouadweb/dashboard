@@ -8,9 +8,6 @@ import {
   Footer,
   Sidebar,
   ThemeSettings,
-  Notification,
-  Chat,
-  Cart,
 } from "./components";
 import {
   Ecommerce,
@@ -31,7 +28,6 @@ import {
 } from "./pages";
 
 import "./App.css";
-import { useState } from "react";
 
 function App() {
   const {
