@@ -3,6 +3,9 @@ import { MdOutlineCancel } from "react-icons/md";
 import { useStateContext } from "../contexts/ContextProvider";
 import CardNotification from "./CardNotification";
 import avatar from "../data/avatar.jpg";
+import { GrUserSettings } from "react-icons/gr";
+import { FiMessageSquare } from "react-icons/fi";
+import { BiTask } from "react-icons/bi";
 
 const Chat = () => {
   const { setIsProfile } = useStateContext();
@@ -34,9 +37,25 @@ const Chat = () => {
             </div>
           </div>
         </div>
-        <CardNotification title={"My Profile"} content="Account Settings" />
-        <CardNotification title={"My Inbox"} content="Messaging & Emailing" />
-        <CardNotification title={"My Tasks"} content="To-do and Daily Tasks" />
+        <CardNotification
+          title={"My Profile"}
+          content="Account Settings"
+          icon={
+            <GrUserSettings className=" football e-card-corner w-14 text-2xl" />
+          }
+        />
+        <CardNotification
+          title={"My Inbox"}
+          content="Messaging & Emailing"
+          icon={
+            <FiMessageSquare className=" football e-card-corner w-14 text-2xl" />
+          }
+        />
+        <CardNotification
+          title={"My Tasks"}
+          content="To-do and Daily Tasks"
+          icon={<BiTask className=" football e-card-corner w-14 text-2xl" />}
+        />
       </div>
     </div>
   );
