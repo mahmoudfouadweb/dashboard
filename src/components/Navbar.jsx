@@ -28,7 +28,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   </TooltipComponent>
 );
 
-const Navbar = () => {
+const Navbar = ({ setIsNotification }) => {
   const {
     activeMenu,
     setActiveMenu,
@@ -39,6 +39,7 @@ const Navbar = () => {
     setScreenSize,
     currentColor,
     isCart,
+    isNotification,
   } = useStateContext();
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
 
-      <div className="flex">
+      <div className="flex relative">
         <NavButton
           title="Cart"
           customFunc={() => handleClick("cart")}
@@ -107,7 +108,7 @@ const Navbar = () => {
         {isClicked.cart && isCart ? <Cart /> : " "}
         {isClicked.chat && <Chat />}
         {isClicked.userProfile && <UserProfile />}
-        {isClicked.notification && <Notification />}
+        {isClicked.notification && isNotification ? <Notification /> : ""}
       </div>
     </div>
   );

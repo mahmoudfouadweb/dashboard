@@ -17,6 +17,7 @@ export const ContextProvider = ({ children }) => {
   const [currentMode, setCurrentMode] = useState("Light");
   const [themeSettings, setThemeSettings] = useState(false);
   const [isCart, setIsCart] = useState(false);
+  const [isNotification, setIsNotification] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -32,7 +33,10 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
     if (clicked === "cart") setIsCart(true);
+    if (clicked === "notification")
+      setIsNotification((prevState) => !prevState);
   };
+
   return (
     <StateContext.Provider
       value={{
@@ -53,6 +57,8 @@ export const ContextProvider = ({ children }) => {
         setMode,
         isCart,
         setIsCart,
+        isNotification,
+        setIsNotification,
       }}
     >
       {children}

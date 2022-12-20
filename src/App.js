@@ -3,7 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { useStateContext } from "./contexts/ContextProvider";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import {
+  Navbar,
+  Footer,
+  Sidebar,
+  ThemeSettings,
+  Notification,
+} from "./components";
 import {
   Ecommerce,
   Orders,
@@ -23,6 +29,7 @@ import {
 } from "./pages";
 
 import "./App.css";
+import { useState } from "react";
 
 function App() {
   const {
@@ -31,6 +38,7 @@ function App() {
     setThemeSettings,
     currentColor,
     currentMode,
+    isNotification,
   } = useStateContext();
 
   return (
@@ -63,12 +71,12 @@ function App() {
           }`}
         >
           <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-            <Navbar />
+            <Navbar  />
           </div>
 
           <div>
             {themeSettings && <ThemeSettings />}
-
+            {isNotification && <Notification />}
             <Routes>
               {/* Dashboard */}
               <Route path="/" element={<Ecommerce />} />
