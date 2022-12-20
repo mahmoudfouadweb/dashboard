@@ -18,6 +18,8 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [isCart, setIsCart] = useState(false);
   const [isNotification, setIsNotification] = useState(false);
+  const [isChat, setIsChat] = useState(false);
+  const [isProfile, setIsProfile] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -35,6 +37,8 @@ export const ContextProvider = ({ children }) => {
     if (clicked === "cart") setIsCart(true);
     if (clicked === "notification")
       setIsNotification((prevState) => !prevState);
+    if (clicked === "chat") setIsChat((prevState) => !prevState);
+    if (clicked === "userProfile") setIsProfile((prevState) => !prevState);
   };
 
   return (
@@ -59,6 +63,10 @@ export const ContextProvider = ({ children }) => {
         setIsCart,
         isNotification,
         setIsNotification,
+        isChat,
+        setIsChat,
+        isProfile,
+        setIsProfile,
       }}
     >
       {children}

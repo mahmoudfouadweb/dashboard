@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardNotification = ({ title, content, img }) => {
+const CardNotification = ({ title, content, img, time }) => {
   return (
     <div>
       <div className="e-card">
@@ -9,6 +9,7 @@ const CardNotification = ({ title, content, img }) => {
           <div className="e-card-header-caption">
             <div className="e-card-header-title">{title}</div>
             <div className="e-card-sub-title">{content}</div>
+            <div className="e-card-sub-title italic">{time}</div>
           </div>
         </div>
       </div>

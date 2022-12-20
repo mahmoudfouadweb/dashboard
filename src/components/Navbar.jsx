@@ -28,18 +28,18 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   </TooltipComponent>
 );
 
-const Navbar = ({ setIsNotification }) => {
+const Navbar = () => {
   const {
-    activeMenu,
     setActiveMenu,
     isClicked,
-    setIsClicked,
     handleClick,
     screenSize,
     setScreenSize,
     currentColor,
     isCart,
     isNotification,
+    isChat,
+    isProfile,
   } = useStateContext();
 
   useEffect(() => {
@@ -75,7 +75,6 @@ const Navbar = ({ setIsNotification }) => {
           customFunc={() => handleClick("cart")}
           dotColor={"#03c9d7"}
           color={currentColor}
-          onClick={() => console.log("cart")}
           icon={<FiShoppingCart />}
         />
         <NavButton
@@ -105,9 +104,9 @@ const Navbar = ({ setIsNotification }) => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
-        {isClicked.cart && isCart ? <Cart /> : " "}
-        {isClicked.chat && <Chat />}
-        {isClicked.userProfile && <UserProfile />}
+        {isClicked.cart && isCart ? <Cart /> : ""}
+        {isClicked.chat && isChat ? <Chat /> : ""}
+        {isClicked.userProfile && isProfile ? <UserProfile /> : ""}
         {isClicked.notification && isNotification ? <Notification /> : ""}
       </div>
     </div>
